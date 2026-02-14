@@ -52,11 +52,13 @@ Q18_SCENARIOS = [
     }
 ]
 
+from typing import Optional
+
 class SearchRequest(BaseModel):
     query: str
     k: int
     rerank: bool
-    rerankK: int
+    rerankK: Optional[int] = None
 
 @app.post("/")
 @app.post("/q18")
@@ -118,3 +120,4 @@ def semantic_search(req: SearchRequest):
             "totalDocs": 1000
         }
     }
+
